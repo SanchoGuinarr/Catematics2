@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquationGenerator", "Equati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tester", "Tester\Tester.csproj", "{EC481FC3-8CF3-400C-8616-5C713511D698}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatematicsMnaui", "CatematicsMnaui\CatematicsMnaui.csproj", "{E9A0151D-0768-41A6-BFC1-CFE07254D453}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{EC481FC3-8CF3-400C-8616-5C713511D698}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC481FC3-8CF3-400C-8616-5C713511D698}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC481FC3-8CF3-400C-8616-5C713511D698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9A0151D-0768-41A6-BFC1-CFE07254D453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9A0151D-0768-41A6-BFC1-CFE07254D453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9A0151D-0768-41A6-BFC1-CFE07254D453}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E9A0151D-0768-41A6-BFC1-CFE07254D453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9A0151D-0768-41A6-BFC1-CFE07254D453}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9A0151D-0768-41A6-BFC1-CFE07254D453}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

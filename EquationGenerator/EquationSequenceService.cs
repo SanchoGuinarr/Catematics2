@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace EquationGenerator
 {
-    public class EquationSequence
+    public class EquationSequenceService : IEquationSequenceService
     {
         private Settings settings;
         public List<ICartItem> Cart { get; set; } = new();
-        private List<ComputingObject> ComputingObjects { get; set; } = new();
+        public List<ComputingObject> ComputingObjects { get; set; } = new();
 
         private State actualState;
 
         private Random Random = new();
-        private Generator generator = new();
+        private GeneratorService generator = new();
 
         public IMoneyCounter Treasure { get; set; } = new MoneyCounter();
         private int counter = 0;
@@ -40,12 +40,12 @@ namespace EquationGenerator
         // helpers for logging
         private string computed = "";
         private int computedCounter = 0;
-        public EquationSequence(Settings Settings)
+        public EquationSequenceService(Settings Settings)
         {
             settings = Settings;
             Init();
         }
-        public EquationSequence()
+        public EquationSequenceService()
         {
             settings = new()
             {
@@ -134,7 +134,7 @@ namespace EquationGenerator
             {
                 counter++;
                 AEquation equation = NextEquation();
-           
+
                 string computedString = ComputedByObjectString(equation);
                 if (computedString == "")
                 {
@@ -210,7 +210,7 @@ namespace EquationGenerator
             }
             if (newItem is CartItemNumberAdd)
             {
-               actualState.MaxNumAdd++;
+                actualState.MaxNumAdd++;
             }
             else if (newItem is CartItemNumberMulti)
             {
@@ -251,10 +251,10 @@ namespace EquationGenerator
                     Name = "OBJECT_" + nameCounter++,
                     Price = basePrice * 3
                 });
-                nextComputingObjectValue += computingValueStep; 
+                nextComputingObjectValue += computingValueStep;
             }
 
-            if(!Cart.Any(i => i is CartItemNumberAdd))
+            if (!Cart.Any(i => i is CartItemNumberAdd))
             {
                 Cart.Add(new CartItemNumberAdd()
                 {
@@ -301,7 +301,7 @@ namespace EquationGenerator
                 });
                 nextComplexityMultiValue += complexityMultiValueStep;
             }
-            
+
         }
 
         private int GenerateBasePrice(int maxComplexity)

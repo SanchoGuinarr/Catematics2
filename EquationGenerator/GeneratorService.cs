@@ -27,7 +27,7 @@ namespace EquationGenerator
         overTwenty = 2,
         overHundert = 3
     }
-    public class Generator
+    public class GeneratorService : IGeneratorService
     {
         Random Random = new Random();
         public AEquation GenerateIntEquation(State state, bool random = true)

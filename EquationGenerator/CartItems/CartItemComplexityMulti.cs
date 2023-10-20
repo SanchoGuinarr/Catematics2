@@ -11,7 +11,7 @@ namespace EquationGenerator.CartItems
     {
         public int Price { get; set; }
 
-        public string Name => "Podmínka: " + Generator.ComplexityConditionMultiToString(Condition) + " (" + Price + ")";
+        public string Name => "Podmínka: " + GeneratorService.ComplexityConditionMultiToString(Condition) + " (" + Price + ")";
 
         public ComplexityConditionMulti Condition { get; set; }
     }

@@ -16,11 +16,11 @@ namespace Catematics.ViewModel
 
         public string Money => Sequence.Treasure.Money.ToString();
 
-        private EquationSequence Sequence;
+        private EquationSequenceService Sequence;
 
         public MainWindowViewModel()
         {
-            Sequence = new EquationSequence();
+            Sequence = new EquationSequenceService();
             NewEquation();
         }
 

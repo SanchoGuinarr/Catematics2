@@ -7,7 +7,7 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            EquationSequence sequence = new();
+            EquationSequenceService sequence = new();
             for (int i = 0; i < 10; i++)
             {
                 sequence.GenerateSequence(true);

@@ -11,7 +11,7 @@ namespace EquationGenerator.CartItems
     {
         public int Price { get; set; }
 
-        public string Name => "Operace: " + Generator.OperationToString(Operation) + " (" + Price + ")";
+        public string Name => "Operace: " + GeneratorService.OperationToString(Operation) + " (" + Price + ")";
 
         public OperationCondition Operation { get; set; }
     }
