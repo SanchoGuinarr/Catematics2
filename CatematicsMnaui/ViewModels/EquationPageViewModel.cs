@@ -9,5 +9,6 @@ namespace CatematicsMnaui.ViewModels
 {
     public class EquationPageViewModel : ObservableObject
     {
+        
     }
 }

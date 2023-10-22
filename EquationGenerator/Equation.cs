@@ -8,7 +8,7 @@ namespace EquationGenerator
         fraction
     }
 
-    public abstract class AEquation
+    public abstract class AEquation : IEquation
     {
         public NumberType Type { get; set; }
         public ANumber FirstNumber { get; set; }
@@ -70,7 +70,7 @@ namespace EquationGenerator
         {
             return FirstNumber.ToString() + " " + operatorString + " " + SecondNumber.ToString() + " = ";
         }
-        public string GetWholeEquation() 
+        public string GetWholeEquation()
         {
             return GetAssignment() + " " + Result.ToString();
         }
@@ -110,7 +110,7 @@ namespace EquationGenerator
             }
         }
 
-        protected int ComputeComplexity() 
+        protected int ComputeComplexity()
         {
             return FirstNumber.GetComplexityValue() * SecondNumber.GetComplexityValue() * Result.GetComplexityValue();
         }
@@ -133,7 +133,7 @@ namespace EquationGenerator
             {
                 return new IntNumber()
                 {
-                    Value = number.Numerator / number.Denominator 
+                    Value = number.Numerator / number.Denominator
                 };
             }
             else
@@ -142,7 +142,7 @@ namespace EquationGenerator
             }
         }
 
-       
+
     }
 
     public class EquationAdition : AEquation

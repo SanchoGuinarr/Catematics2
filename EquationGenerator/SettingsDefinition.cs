@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace EquationGenerator
 {
-    public class Settings
+    public class SettingsDefinition
     {
-        public State InitialState { get; set; }
-        public State FinalState { get; set; }
+        public ComplexityState InitialState { get; set; }
+        public ComplexityState FinalState { get; set; }
         public int ComputingObjectsCount { get; set; }
-        public int EquationStepMin { get; set; }
-        public int EquationStepMax { get; set; }
     }
 }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EquationGenerator.Services.Interfaces;
 
-namespace EquationGenerator
+namespace EquationGenerator.Services
 {
     public enum OperationCondition
     {
@@ -30,7 +31,7 @@ namespace EquationGenerator
     public class GeneratorService : IGeneratorService
     {
         Random Random = new Random();
-        public AEquation GenerateIntEquation(State state, bool random = true)
+        public AEquation GenerateIntEquation(ComplexityState state, bool random = true)
         {
             OperationCondition operation = GenerateOperation(state.OperationCondition, random);
             int firstNumber;
@@ -44,10 +45,10 @@ namespace EquationGenerator
                     switch (state.ComplexityConditionAdd)
                     {
                         case ComplexityConditionAdd.none:
-                            maxComplexityNumber = 10 - (firstNumber % 10);
+                            maxComplexityNumber = 10 - firstNumber % 10;
                             break;
                         case ComplexityConditionAdd.overTen:
-                            maxComplexityNumber = (10 - (firstNumber % 10)) + 10;
+                            maxComplexityNumber = 10 - firstNumber % 10 + 10;
                             break;
                         case ComplexityConditionAdd.overMultiTens:
                             maxComplexityNumber = state.MaxNumAdd;
@@ -71,7 +72,7 @@ namespace EquationGenerator
                             maxComplexityNumber = firstNumber % 10;
                             break;
                         case ComplexityConditionAdd.overTen:
-                            maxComplexityNumber = (firstNumber % 10) + 10;
+                            maxComplexityNumber = firstNumber % 10 + 10;
                             break;
                         case ComplexityConditionAdd.overMultiTens:
                             maxComplexityNumber = firstNumber;

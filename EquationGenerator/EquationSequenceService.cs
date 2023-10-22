@@ -1,6 +1,6 @@
-﻿using EquationGenerator;
-using EquationGenerator.CartItems;
+﻿using EquationGenerator.CartItems;
 using EquationGenerator.Interfaces;
+using EquationGenerator.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +11,11 @@ namespace EquationGenerator
 {
     public class EquationSequenceService : IEquationSequenceService
     {
-        private Settings settings;
+        private SettingsDefinition settings;
         public List<ICartItem> Cart { get; set; } = new();
         public List<ComputingObject> ComputingObjects { get; set; } = new();
 
-        private State actualState;
+        private ComplexityState actualState;
 
         private Random Random = new();
         private GeneratorService generator = new();
@@ -40,7 +40,7 @@ namespace EquationGenerator
         // helpers for logging
         private string computed = "";
         private int computedCounter = 0;
-        public EquationSequenceService(Settings Settings)
+        public EquationSequenceService(SettingsDefinition Settings)
         {
             settings = Settings;
             Init();
@@ -50,8 +50,8 @@ namespace EquationGenerator
             settings = new()
             {
                 ComputingObjectsCount = 10,
-                EquationStepMin = 5,
-                EquationStepMax = 15,
+                //EquationStepMin = 5,
+                //EquationStepMax = 15,
                 InitialState = GetInitialState(),
                 FinalState = new()
                 {
@@ -65,7 +65,7 @@ namespace EquationGenerator
             Init();
         }
 
-        private State GetInitialState()
+        private ComplexityState GetInitialState()
         {
             return new()
             {

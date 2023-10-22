@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CatematicsMnaui.Models.Messages
 {
-    public class StateChangedMessage: ValueChangedMessage<ComplexityState>
+    public class NumberInsertedMessage: ValueChangedMessage<string>
     {
-        public StateChangedMessage(ComplexityState state) : base(state)
+        public NumberInsertedMessage(string number) : base(number)
         {
         }
     }
