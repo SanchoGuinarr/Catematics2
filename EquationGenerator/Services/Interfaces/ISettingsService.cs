@@ -1,4 +1,4 @@
-﻿namespace EquationGenerator.Services
+﻿namespace EquationGenerator.Services.Interfaces
 {
     public interface ISettingsService
     {

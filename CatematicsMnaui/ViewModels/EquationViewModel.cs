@@ -15,6 +15,7 @@ namespace CatematicsMnaui.ViewModels
     {
         private IEquation _equation;
         private string _currentNumber;
+        private string _assignmentText;
 
         public EquationViewModel()
         {
@@ -24,25 +25,41 @@ namespace CatematicsMnaui.ViewModels
         private string _equationText;
 
         [RelayCommand]
-        public void AddChar(string character)
+        public void Digit(string character)
         {
             _currentNumber += character;
+            EquationText = _assignmentText + _currentNumber;
             WeakReferenceMessenger.Default.Send(new NumberInsertedMessage(_currentNumber));
         }
 
         [RelayCommand]
-        public void DeleteChar()
+        public void Clear(string character)
         {
-            if (_currentNumber.Length > 0)
+            if (_currentNumber.Length == 0)
             {
-                _currentNumber = _currentNumber.Remove(_currentNumber.Length - 1);
+                return;
             }
+            _currentNumber = "";
+            EquationText = _assignmentText + _currentNumber;
+            WeakReferenceMessenger.Default.Send(new NumberInsertedMessage(_currentNumber));
+        }
+
+        [RelayCommand]
+        public void Backspace()
+        {
+            if (_currentNumber.Length == 0)
+            {
+                return;
+            }
+            _currentNumber = _currentNumber.Remove(_currentNumber.Length - 1);
+            EquationText = _assignmentText + _currentNumber;
             WeakReferenceMessenger.Default.Send(new NumberInsertedMessage(_currentNumber));
         }
 
         public void SetEquation(IEquation equation)
         {
-            EquationText = equation.GetAssignment();
+            _assignmentText = equation.GetAssignment();
+            EquationText = _assignmentText;
         }
     }
 }
