@@ -72,7 +72,7 @@ namespace EquationGenerator.Services
                             maxComplexityNumber = firstNumber % 10;
                             break;
                         case ComplexityConditionAdd.overTen:
-                            maxComplexityNumber = firstNumber % 10 + 10;
+                            maxComplexityNumber = firstNumber < 10 ? firstNumber : firstNumber % 10 + 10;
                             break;
                         case ComplexityConditionAdd.overMultiTens:
                             maxComplexityNumber = firstNumber;

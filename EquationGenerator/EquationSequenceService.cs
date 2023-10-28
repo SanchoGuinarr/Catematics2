@@ -178,7 +178,7 @@ namespace EquationGenerator
             }
             else
             {
-                return "COMPUTED BY: " + computingObject.Name + " ";
+                return "COMPUTED BY: " + computingObject.Title + " ";
             }
         }
 
@@ -248,7 +248,7 @@ namespace EquationGenerator
                 Cart.Add(new ComputingObject()
                 {
                     Complexity = maxComplexity / 4,
-                    Name = "OBJECT_" + nameCounter++,
+                    Title = "OBJECT_" + nameCounter++,
                     Price = basePrice * 3
                 });
                 nextComputingObjectValue += computingValueStep;

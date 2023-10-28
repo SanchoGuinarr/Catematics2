@@ -1,7 +1,8 @@
-﻿namespace EquationGenerator.Services
+﻿namespace EquationGenerator.Services.Interfaces
 {
     public interface IComplexityStateService
     {
+        MoneyCounter MoneyCounter { get; set; }
         bool CanGenerateNextComputingObject(ComplexityState state, int existedComputingOjects);
         int GetCurrentStateComplexity(ComplexityState state);
         bool IsComplexityConditionSatisfied(ComplexityConditionAdd complexityConditionAdd, ComplexityState state);

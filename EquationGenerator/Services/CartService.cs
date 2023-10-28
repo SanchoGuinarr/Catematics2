@@ -28,15 +28,48 @@ namespace EquationGenerator.Services
         private const int COMPLEXITY_ADD_PRICE_MODIFIER = 2;
         private const int COMPLEXITY_MULTI_PRICE_MODIFIER = 2;
 
+        /// <summary>
+        /// Names of computing objects levels
+        /// </summary>
+        private static string[] ComputingObjectsLevelNames = new string[]
+        {
+            "studentík",
+            "student",
+            "premiant",
+            "počtář",
+            "učitel",
+            "inženýr",
+            "matematik",
+            "asistent",
+            "docent",
+            "profesor",
+        };
+
 
         private int _computingObjectCounter = 1;
+        // used for determining computing object description
+        private int _subLevel = 0;
 
         private readonly ISettingsService _settingsService;
         private readonly IComplexityStateService _complexityStateService;
 
         private readonly Random _random;
 
-        public List<ICartItem> CartItems { get; set; }
+        public List<ICartItem> CartItems { get; set; } = new();
+
+        public CartService(ISettingsService settingsService, IComplexityStateService complexityStateService)
+        {
+            _settingsService = settingsService;
+            _complexityStateService = complexityStateService;
+
+            _random = new Random();
+
+            // determises number of sub levels for every computing object level names
+            // eg. if there are 30 computing objects and 10 level names then sub level is 3
+            // therefore every ComputingObjectsLevelNames will have 3 sub levels
+            // so names goes as folows: studentík 1 úrovně, studentík 2. úrovně, studentík 3.úrovně, student 1. úrovně, student 3. úrovně... 
+            _subLevel = _settingsService.Settings.ComputingObjectsCount / ComputingObjectsLevelNames.Length;
+        }
 
         /// <summary>
         /// Generates cart items from current state
@@ -76,7 +109,7 @@ namespace EquationGenerator.Services
                 return isGenerated;
             }
             ComplexityConditionMulti nextComplexity = (ComplexityConditionMulti)((int)state.ComplexityConditionMulti + 1);
-            if (!CartItems.Any(i => i is CartItemComplexityMulti) && _complexityStateService.IsComplexityConditionSatisfied(nextComplexity, state))
+            if ((!CartItems.Any(i => i is CartItemComplexityMulti)) && _complexityStateService.IsComplexityConditionSatisfied(nextComplexity, state))
             {
                 CartItems.Add(new CartItemComplexityMulti()
                 {
@@ -95,7 +128,7 @@ namespace EquationGenerator.Services
                 return isGenerated;
             }
             ComplexityConditionAdd nextComplexity = (ComplexityConditionAdd)((int)state.ComplexityConditionAdd + 1);
-            if (!CartItems.Any(i => i is CartItemComplexityAdd) && _complexityStateService.IsComplexityConditionSatisfied(nextComplexity, state))
+            if ((!CartItems.Any(i => i is CartItemComplexityAdd)) && _complexityStateService.IsComplexityConditionSatisfied(nextComplexity, state))
             {
                 CartItems.Add(new CartItemComplexityAdd()
                 {
@@ -116,7 +149,7 @@ namespace EquationGenerator.Services
             }
 
             OperationCondition nextOperation = (OperationCondition)state.OperationCondition.Count;
-            if (!CartItems.Any(i => i is CartItemOperation) && _complexityStateService.IsComplexityConditionSatisfied(nextOperation, state))
+            if ((!CartItems.Any(i => i is CartItemOperation)) && _complexityStateService.IsComplexityConditionSatisfied(nextOperation, state))
             {
                 CartItems.Add(new CartItemOperation()
                 {
@@ -131,7 +164,7 @@ namespace EquationGenerator.Services
 
         private bool GenerateNumberItemMulti(ComplexityState state, bool isGenerated, int currentComplexity)
         {
-            if (!CartItems.Any(i => i is CartItemNumberMulti && _complexityStateService.IsComplexityConditionSatisfiedForMultiNumber(state)))
+            if ((!CartItems.Any(i => i is CartItemNumberMulti) && _complexityStateService.IsComplexityConditionSatisfiedForMultiNumber(state)))
             {
                 CartItems.Add(new CartItemNumberMulti()
                 {
@@ -161,12 +194,12 @@ namespace EquationGenerator.Services
 
         private bool GenerateComputingObjects(ComplexityState state, bool isGenerated, int currentComplexity)
         {
-            if (!CartItems.Any(i => i is ComputingObject) && _complexityStateService.CanGenerateNextComputingObject(state, CartItems.Count))
+            if ((!CartItems.Any(i => i is ComputingObject)) && _complexityStateService.CanGenerateNextComputingObject(state, CartItems.Count))
             {
                 CartItems.Add(new ComputingObject()
                 {
                     Complexity = currentComplexity / COMPUTING_OBJECT_COMPLEXITY_MODIFIER,
-                    Name = "Kočka " + _computingObjectCounter++,
+                    Title = "Kočka " + _computingObjectCounter++,
                     Price = GetBasePrice(currentComplexity) * COMPUTING_OBJECT_PRICE_MODIFIER,
                 });
                 isGenerated = true;
@@ -178,6 +211,13 @@ namespace EquationGenerator.Services
         private int GetBasePrice(int complexity)
         {
             return _random.Next(complexity / BASIC_PRICE_MODIFIER, complexity);
+        }
+
+        private string GetCurentLevelName(int level)
+        {
+            int index = level / _subLevel;
+            int subLevelIndex = level % _subLevel;
+            return ComputingObjectsLevelNames[index] + subLevelIndex + ". úrovně";
         }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:views="clr-namespace:CatematicsMnaui.Views"
              x:DataType="viewModels:EquationPageViewModel"
              x:Class="CatematicsMnaui.Views.EquationPage"
-             Title="EquationPage">
+             >
     <VerticalStackLayout>
         <Button 
             Text="Start"

@@ -36,6 +36,7 @@ namespace CatematicsMnaui
             builder.Services.AddSingleton<IComplexityStateService, ComplexityStateService>();
             builder.Services.AddSingleton<IGeneratorService, GeneratorService>();
             builder.Services.AddSingleton<ISettingsService, SettingsService>();
+            builder.Services.AddSingleton<IComputingObjectService, ComputingObjectService>();
             return builder;
         }
 
@@ -46,6 +47,8 @@ namespace CatematicsMnaui
             builder.Services.AddTransient<MyCatsPageViewModel>();
             builder.Services.AddTransient<ShopPageViewModel>();
             builder.Services.AddTransient<EquationViewModel>();
+            builder.Services.AddTransient<MoneyCounterViewModel>();
+            builder.Services.AddTransient<CartItemViewModel>();
             return builder;
         }
     }

@@ -12,7 +12,7 @@ namespace Catematics.ViewModel
     {
         private IComputingObject model;
 
-        public string Name => model.Name;
+        public string Name => model.Title;
         public string ImageSource { get; set; }
         public ComputingObjectViewModel(ComputingObject Model)
         {

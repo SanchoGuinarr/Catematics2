@@ -18,5 +18,18 @@ namespace EquationGenerator
         {
             return MaxNumAdd + MaxNumMulti;
         }
+
+        public ComplexityState GetCopy()
+        {
+            return new ComplexityState()
+            {
+                MaxNumAdd = MaxNumAdd,
+                MaxNumMulti = MaxNumMulti,
+                OperationCondition = new HashSet<OperationCondition>(OperationCondition),
+                ComplexityConditionAdd = ComplexityConditionAdd,
+                ComplexityConditionMulti = ComplexityConditionMulti
+            };
+        }
+
     }
 }

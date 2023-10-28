@@ -12,8 +12,18 @@ namespace EquationGenerator.CartItems
     {
         public int Price { get; set; }
 
-        public string Name => "Podmínka: " + GeneratorService.ComplexityConditionMultiToString(Condition) + " (" + Price + ")";
+        public string Title => "Pokročilé násobení";
+
+        public string Description => "Podmínka: " + GeneratorService.ComplexityConditionMultiToString(Condition);
+
+        public string ImageSource => "shopping_cart_black_24dp.svg";
 
         public ComplexityConditionMulti Condition { get; set; }
+
+        public ComplexityState ModifyState(ComplexityState state)
+        {
+            state.ComplexityConditionMulti = Condition;
+            return state;
+        }
     }
 }

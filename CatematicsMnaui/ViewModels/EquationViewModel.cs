@@ -58,6 +58,7 @@ namespace CatematicsMnaui.ViewModels
 
         public void SetEquation(IEquation equation)
         {
+            _currentNumber = "";
             _assignmentText = equation.GetAssignment();
             EquationText = _assignmentText;
         }

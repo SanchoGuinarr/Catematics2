@@ -9,7 +9,7 @@ namespace EquationGenerator.Interfaces
     public interface IComputingObject
     {
         public int Complexity { get; }
-        public string Name { get; set; }
+        public string Title { get; set; }
         public string ImageSource { get; set; }
     }
 }

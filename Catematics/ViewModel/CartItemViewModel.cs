@@ -13,7 +13,7 @@ namespace Catematics.ViewModel
         public event EventHandler<ICartItem> ItemBought;
 
         public ICommand ButtonBuyCommand { get; set; }
-        public string Name => model.Name;
+        public string Name => model.Title;
         public string Price => model.Price.ToString();
 
         private ICartItem model;

@@ -1,4 +1,5 @@
-﻿using EquationGenerator.Interfaces;
+﻿using EquationGenerator.CartItems;
+using EquationGenerator.Interfaces;
 using System.Collections.Generic;
 
 namespace EquationGenerator.Services.Interfaces

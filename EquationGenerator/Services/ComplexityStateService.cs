@@ -13,6 +13,8 @@ namespace EquationGenerator.Services
         private readonly IGeneratorService _generatorService;
         private readonly ISettingsService _settingsService;
 
+        public MoneyCounter MoneyCounter { get; set; } = new() { Money = 10000 };
+
         public ComplexityStateService(IGeneratorService generatorService, ISettingsService settingsService)
         {
             _generatorService = generatorService;
@@ -29,12 +31,14 @@ namespace EquationGenerator.Services
             // current number step (20 +10) - (10 + 5) = 15
             // 15 / 6 = 2 - so result will be false
             // next computing object should be generated on current number step 6 * 3 = 18
-            return GetCurrentNumberStep(state) / _settingsService.ComputigObectSteps > existedComputingOjects + 1;
+            int currentNumberStep = GetCurrentNumberStep(state);
+            bool result = currentNumberStep / _settingsService.ComputigObectSteps > existedComputingOjects;
+            return result;
         }
 
         private int GetCurrentNumberStep(ComplexityState state)
         {
-            return (state.GetNumberStepValue()) - _settingsService.Settings.InitialState.GetNumberStepValue();
+            return state.GetNumberStepValue() - _settingsService.Settings.InitialState.GetNumberStepValue();
         }
 
         public int GetCurrentStateComplexity(ComplexityState state)

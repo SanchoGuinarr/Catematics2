@@ -9,11 +9,16 @@ namespace CatematicsMnaui.ViewModels
 {
     public partial class AppShellViewModel : ObservableObject
     {
-        public AppShellViewModel(EquationPageViewModel equationPageViewModel, MyCatsPageViewModel myCatsPageViewModel, ShopPageViewModel shopPageViewModel)
+        public AppShellViewModel(
+            EquationPageViewModel equationPageViewModel, 
+            MyCatsPageViewModel myCatsPageViewModel, 
+            ShopPageViewModel shopPageViewModel, 
+            MoneyCounterViewModel moneyCounterViewModel)
         {
             EquationPageViewModel = equationPageViewModel;
             MyCatsPageViewModel = myCatsPageViewModel;
             ShopPageViewModel = shopPageViewModel;
+            MoneyCounterViewModel = moneyCounterViewModel;
         }
 
         [ObservableProperty]
@@ -24,5 +29,8 @@ namespace CatematicsMnaui.ViewModels
 
         [ObservableProperty]
         private ShopPageViewModel _shopPageViewModel;
+
+        [ObservableProperty]
+        private MoneyCounterViewModel _moneyCounterViewModel;
     }
 }

@@ -7,11 +7,19 @@ using System.Threading.Tasks;
 
 namespace EquationGenerator
 {
-    public class ComputingObject: IComputingObject, ICartItem
+    public class ComputingObject : IComputingObject, ICartItem
     {
         public int Complexity { get; set; }
-        public string Name { get; set; }
+        public string Title { get; set; }
         public int Price { get ; set; }
         public string ImageSource { get; set; }
+
+        public string Description => Title;
+
+
+        public ComplexityState ModifyState(ComplexityState state)
+        {
+            return state;
+        }
     }
 }
