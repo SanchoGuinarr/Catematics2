@@ -1,4 +1,5 @@
-﻿using CatematicsMnaui.Models.Messages;
+﻿using CatematicsMnaui.Models;
+using CatematicsMnaui.Models.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
@@ -17,12 +18,17 @@ namespace CatematicsMnaui.ViewModels
         private string _currentNumber;
         private string _assignmentText;
 
+        public event EventHandler<AnimationEventArgs> DoAnimation;
+
         public EquationViewModel()
         {
         }
 
         [ObservableProperty]
         private string _equationText;
+
+        [ObservableProperty]
+        private string _rewardText;
 
         [RelayCommand]
         public void Digit(string character)
@@ -61,6 +67,17 @@ namespace CatematicsMnaui.ViewModels
             _currentNumber = "";
             _assignmentText = equation.GetAssignment();
             EquationText = _assignmentText;
+            RewardText = equation.Reward.ToString();
+        }
+
+        public void DoCorrectAnimation()
+        {
+            DoAnimation?.Invoke(this, new AnimationEventArgs(AnimationType.Correct));
+        }
+
+        public void DoIncorrectAnimation()
+        {
+            DoAnimation?.Invoke(this, new AnimationEventArgs(AnimationType.Incorrect));
         }
     }
 }

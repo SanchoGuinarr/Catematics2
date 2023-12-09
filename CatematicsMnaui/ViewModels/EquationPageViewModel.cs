@@ -70,6 +70,11 @@ namespace CatematicsMnaui.ViewModels
             {
                 LogText = $"Správně {_equation.GetWholeEquation()}";
                 EquationSolved();
+                EquationViewModel.DoCorrectAnimation();
+            }
+            else if(!string.IsNullOrEmpty(message.Value))
+            {
+                EquationViewModel.DoIncorrectAnimation();
             }
         }
 
