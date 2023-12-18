@@ -38,7 +38,7 @@ namespace EquationGenerator.Services
 
         private int GetCurrentNumberStep(ComplexityState state)
         {
-            return state.GetNumberStepValue() - _settingsService.Settings.InitialState.GetNumberStepValue();
+            return state.GetCurentStep() - _settingsService.Settings.InitialState.GetCurentStep();
         }
 
         public int GetCurrentStateComplexity(ComplexityState state)

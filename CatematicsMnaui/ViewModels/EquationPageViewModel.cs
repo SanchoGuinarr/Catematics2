@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace CatematicsMnaui.ViewModels
 {
-    public partial class EquationPageViewModel : ObservableObject, IRecipient<NumberInsertedMessage>, IRecipient<ItemPurchasedMessage>
+    public partial class EquationPageViewModel : ObservableObject, IRecipient<NumberInsertedMessage>, IRecipient<BuyClickedMessage>
     {
         private readonly IGeneratorService _generatorService;
         private readonly ISettingsService _settingsService;
@@ -72,7 +72,11 @@ namespace CatematicsMnaui.ViewModels
                 EquationSolved();
                 EquationViewModel.DoCorrectAnimation();
             }
-            else if(!string.IsNullOrEmpty(message.Value))
+            else if(_equation.ResultIsNotComplete(message.Value))
+            {
+                return;
+            }
+            else
             {
                 EquationViewModel.DoIncorrectAnimation();
             }
@@ -86,7 +90,7 @@ namespace CatematicsMnaui.ViewModels
             PrepareNewEquation();
         }
 
-        public void Receive(ItemPurchasedMessage message)
+        public void Receive(BuyClickedMessage message)
         {
             _complexityStateService.MoneyCounter.Money -= message.Value.Price;
             AddComputingObject(message.Value);  
@@ -109,6 +113,7 @@ namespace CatematicsMnaui.ViewModels
             if (cartItem is IComputingObject computingObject)
             {
                 _computingObjectService.ComputingObjects.Add(computingObject);
+                WeakReferenceMessenger.Default.Send(new ItemPurchasedMessage(computingObject));
             }
         }
 

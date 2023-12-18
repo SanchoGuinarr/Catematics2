@@ -3,15 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:CatematicsMnaui.ViewModels"
              xmlns:v="clr-namespace:CatematicsMnaui.Views"
-             x:Class="CatematicsMnaui.Views.ShopPage"
-             x:DataType="vm:ShopPageViewModel"
-    >
-    <CollectionView ItemsSource="{Binding CartItems}">
+             x:Class="CatematicsMnaui.Views.MyObjectsPage"
+             x:DataType="vm:MyObjectsPageViewModel"
+             
+             >
+    <CollectionView ItemsSource="{Binding ComputingObjects}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <v:CartItemView
-                    BindingContext="{Binding}"
-                />
+                <v:ComputingObjectView
+                BindingContext="{Binding}"
+            />
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

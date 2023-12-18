@@ -110,6 +110,22 @@ namespace EquationGenerator
             }
         }
 
+        public bool ResultIsNotComplete(string result)
+        {
+            if (string.IsNullOrEmpty(result))
+            {
+                return true;
+            }
+            if (Result is IntNumber intNumber)
+            {
+                return intNumber.Value.ToString().StartsWith(result);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         protected int ComputeComplexity()
         {
             return FirstNumber.GetComplexityValue() * SecondNumber.GetComplexityValue() * Result.GetComplexityValue();

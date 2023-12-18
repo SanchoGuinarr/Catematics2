@@ -24,7 +24,7 @@
         </Tab>
         <Tab Title="Kočky"
             Icon="pets_black_24dp.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:MyCatsPage}" BindingContext="{Binding MyCatsPageViewModel}"/>
+            <ShellContent ContentTemplate="{DataTemplate views:MyObjectsPage}" BindingContext="{Binding MyObjectsPageViewModel}"/>
         </Tab>
     </TabBar>
 </Shell>

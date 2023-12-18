@@ -11,12 +11,12 @@ namespace CatematicsMnaui.ViewModels
     {
         public AppShellViewModel(
             EquationPageViewModel equationPageViewModel, 
-            MyCatsPageViewModel myCatsPageViewModel, 
+            MyObjectsPageViewModel myCatsPageViewModel, 
             ShopPageViewModel shopPageViewModel, 
             MoneyCounterViewModel moneyCounterViewModel)
         {
             EquationPageViewModel = equationPageViewModel;
-            MyCatsPageViewModel = myCatsPageViewModel;
+            MyObjectsPageViewModel = myCatsPageViewModel;
             ShopPageViewModel = shopPageViewModel;
             MoneyCounterViewModel = moneyCounterViewModel;
         }
@@ -25,7 +25,7 @@ namespace CatematicsMnaui.ViewModels
         private EquationPageViewModel _equationPageViewModel;
 
         [ObservableProperty]
-        private MyCatsPageViewModel _myCatsPageViewModel;
+        private MyObjectsPageViewModel _myObjectsPageViewModel;
 
         [ObservableProperty]
         private ShopPageViewModel _shopPageViewModel;

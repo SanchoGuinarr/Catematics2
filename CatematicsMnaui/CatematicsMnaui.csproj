@@ -49,6 +49,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\complexity.jpg" />
+	  <None Remove="Resources\Images\num.jpg" />
+	  <None Remove="Resources\Images\num_multi.jpg" />
+	  <None Remove="Resources\Images\operators.jpg" />
 	  <None Remove="Resources\Images\pets_black_24dp.svg" />
 	  <None Remove="Resources\Images\school_black_24dp.svg" />
 	  <None Remove="Resources\Images\shopping_cart_black_24dp.svg" />
@@ -64,13 +68,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\ComputingObjectView.xaml.cs">
+	    <DependentUpon>ComputingObjectView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\CartItemView.xaml.cs">
 	    <DependentUpon>CartItemView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MyObjectsPage.xaml.cs">
+	    <DependentUpon>MyObjectsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\AppShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ComputingObjectView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CartItemView.xaml">
@@ -85,12 +98,16 @@
 	  <MauiXaml Update="Views\MoneyCounterView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\MyCatsPage.xaml">
+	  <MauiXaml Update="Views\MyObjectsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ShopPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Services\" />
 	</ItemGroup>
 
 </Project>

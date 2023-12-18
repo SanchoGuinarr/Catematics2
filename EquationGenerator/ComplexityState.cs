@@ -14,7 +14,7 @@ namespace EquationGenerator
         public HashSet<OperationCondition> OperationCondition { get; set; }
         public ComplexityConditionAdd ComplexityConditionAdd { get; set; }
         public ComplexityConditionMulti ComplexityConditionMulti { get; set; }
-        public int GetNumberStepValue()
+        public int GetCurentStep()
         {
             return MaxNumAdd + MaxNumMulti;
         }

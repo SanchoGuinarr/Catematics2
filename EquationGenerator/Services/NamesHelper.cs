@@ -30,7 +30,8 @@ namespace CatematicsMnaui.Services
             int subLevel = maxLevel / ComputingObjectsLevelNames.Length; 
             int index = level / subLevel;
             int subLevelIndex = level % subLevel;
-            return ComputingObjectsLevelNames[index] + subLevelIndex + ". úrovně";
+            string subLevelIndexString = subLevelIndex == 0 ? "" : " " + subLevelIndex.ToString() + ". úrovně";
+            return ComputingObjectsLevelNames[index] + subLevelIndexString;
         }
     }
 }

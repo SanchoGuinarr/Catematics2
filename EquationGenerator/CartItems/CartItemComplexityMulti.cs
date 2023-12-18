@@ -16,7 +16,7 @@ namespace EquationGenerator.CartItems
 
         public string Description => "Podmínka: " + GeneratorService.ComplexityConditionMultiToString(Condition);
 
-        public string ImageSource => "shopping_cart_black_24dp.svg";
+        public string ImageSource => "complexity.jpg";
 
         public ComplexityConditionMulti Condition { get; set; }
 

@@ -12,15 +12,12 @@ using System.Threading.Tasks;
 
 namespace CatematicsMnaui.ViewModels
 {
-    public partial class CartItemViewModel : ObservableObject
+    public partial class ComputingObjectViewModel : ObservableObject
     {
-        private ICartItem _cartItem;
+        private IComputingObject _computingObject;
 
         [ObservableProperty]
         private string _title;
-
-        [ObservableProperty]
-        private string _price;
 
         [ObservableProperty]
         private string _description;
@@ -29,22 +26,20 @@ namespace CatematicsMnaui.ViewModels
         private string _image;
 
         [ObservableProperty]
-        private bool _available;
+        private bool _canEdit;
 
         [RelayCommand]
-        public void Buy()
+        public void Edit()
         {
-            WeakReferenceMessenger.Default.Send(new BuyClickedMessage(_cartItem));
+            throw new NotImplementedException();
         }
 
-        public CartItemViewModel(ICartItem cartItem, MoneyCounter moneyCounter)
+        public ComputingObjectViewModel(IComputingObject computingObject)
         {
-            _cartItem = cartItem;
-            Title = _cartItem.Title;
-            Price = "Cena: " + _cartItem.Price.ToString();
-            Description = _cartItem.Description;
-            Image = _cartItem.ImageSource;
-            Available = moneyCounter.Money >= _cartItem.Price;
+            _computingObject = computingObject;
+            Title = _computingObject.Title;
+            Description = _computingObject.Description;
+            Image = _computingObject.ImageSource;
         }
 
         

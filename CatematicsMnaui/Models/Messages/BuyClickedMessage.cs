@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace CatematicsMnaui.Models.Messages
 {
-    public class ItemPurchasedMessage : ValueChangedMessage<IComputingObject>
+    public class BuyClickedMessage : ValueChangedMessage<ICartItem>
     {
-        public ItemPurchasedMessage(IComputingObject computingObject) : base(computingObject)
+        public BuyClickedMessage(ICartItem cartItem) : base(cartItem)
         {
         }
     }

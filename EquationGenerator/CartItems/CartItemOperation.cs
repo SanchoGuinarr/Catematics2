@@ -13,7 +13,7 @@ namespace EquationGenerator.CartItems
         public int Price { get; set; }
         public string Title => GeneratorService.OperationToString(Operation);
         public string Description => "Operace: " + GeneratorService.OperationToString(Operation);
-        public string ImageSource => "shopping_cart_black_24dp.svg";
+        public string ImageSource => "opeators.jpg";
         public OperationCondition Operation { get; set; }
         public ComplexityState ModifyState(ComplexityState state)
         {

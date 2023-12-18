@@ -10,9 +10,9 @@ namespace EquationGenerator.CartItems
     class CartItemNumberAdd : ICartItem
     {
         public int Price { get; set; }
-        public string Title => Value.ToString();
+        public string Title => "Číslo " + Value.ToString();
         public string Description => $"Číslo {Value} pro sčítání a odčítání.";
-        public string ImageSource => "shopping_cart_black_24dp.svg";
+        public string ImageSource => "num.jpg";
         public int Value { get; set; }
         public ComplexityState ModifyState(ComplexityState state)
         {
@@ -25,9 +25,9 @@ namespace EquationGenerator.CartItems
     class CartItemNumberMulti : ICartItem
     {
         public int Price { get; set; }
-        public string Title => Value.ToString() + " (*)";
+        public string Title => "Číslo " + Value.ToString() + " (*)";
         public string Description => $"Číslo {Value} pro násobení a dělení.";
-        public string ImageSource => "shopping_cart_black_24dp.svg";
+        public string ImageSource => "num_multi.jpg";
         public int Value { get; set; }
         public ComplexityState ModifyState(ComplexityState state)
         {

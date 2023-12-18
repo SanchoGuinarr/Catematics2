@@ -2,9 +2,9 @@ using CatematicsMnaui.ViewModels;
 
 namespace CatematicsMnaui.Views;
 
-public partial class MyCatsPage : ContentPage
+public partial class MyObjectsPage : ContentPage
 {
-	public MyCatsPage()
+	public MyObjectsPage()
 	{
 		InitializeComponent();
 	}

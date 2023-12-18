@@ -44,7 +44,7 @@ namespace CatematicsMnaui
         {
             builder.Services.AddTransient<AppShellViewModel>();
             builder.Services.AddTransient<EquationPageViewModel>();
-            builder.Services.AddTransient<MyCatsPageViewModel>();
+            builder.Services.AddTransient<MyObjectsPageViewModel>();
             builder.Services.AddTransient<ShopPageViewModel>();
             builder.Services.AddTransient<EquationViewModel>();
             builder.Services.AddTransient<MoneyCounterViewModel>();
